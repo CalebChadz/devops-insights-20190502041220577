@@ -14,6 +14,7 @@ function fToC(fahrenheit)
 {
   var fTemp = fahrenheit;
   var fToCel = (fTemp - 32) * 5 / 9;
+  fToCel = Math.round(fToCel);
   return fToCel;
 } 
 
