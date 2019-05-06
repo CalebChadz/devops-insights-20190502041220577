@@ -29,8 +29,8 @@
           	} else {
               assert.equal(resp.statusCode, 200);
               var pbody = JSON.parse(body);
-              //check that these cities are not correct as it should be nelson.
-              assert((pbody.city === 'Anderson Mill') || (pbody.city === 'Round Rock'), "City name does not match");
+              //check that these cities are not correct as it should be Blenheim.
+              assert((pbody.city === 'Blenheim') || (pbody.city === 'Nelson'), "City name does not match");
               done();
             }
         });
@@ -69,7 +69,7 @@
           	} else {
               assert.equal(resp.statusCode, 200);
               var pbody = JSON.parse(body);
-              assert(pbody.city === 'Round Rock', "City name does not match");
+              assert(pbody.city === 'Hamilton', "City name does not match");
               done();
             }
         });

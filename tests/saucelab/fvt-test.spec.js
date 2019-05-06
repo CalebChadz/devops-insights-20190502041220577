@@ -64,7 +64,7 @@
     it("Enter zip code and check output - 1", function(done) {
       driver.findElement(webdriver.By.id('zip1')).sendKeys('7010');
       driver.findElement(webdriver.By.id('zip1city')).getText().then(function(text) {
-        assert.equal(text, ' Nelson');
+        assert.equal(text, ' Blenheim');
         done();
       });
     });

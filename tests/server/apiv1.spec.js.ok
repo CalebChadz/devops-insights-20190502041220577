@@ -21,7 +21,7 @@
     		rqst(app).get('/api/v1/getWeather?zip=7011')
     		.end(function(err, res) {
                     assert.equal(res.status, 200);
-                    assert.equal(res.body.city, 'Nelson');
+                    assert.equal(res.body.city, 'Blenheim');
                     done();
                 });
     	});

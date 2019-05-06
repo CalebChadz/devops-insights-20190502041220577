@@ -88,7 +88,7 @@
 
       var body = {
         cod: 200,
-        name: 'Nelson',
+        name: 'Blenheim',
         weather: [
           {
             main: 'cold'
@@ -108,7 +108,7 @@
       apiv1.getWeather(reqMock, resMock);
 
       assert(resMock.status.lastCall.calledWith(200), 'Unexpected response:' + resMock.status.lastCall.args);
-      assert(resMock.send.lastCall.args[0].city === 'Nelson', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
+      assert(resMock.send.lastCall.args[0].city === 'Blenheim', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 78 F', 'Unexpected response:' + resMock.send.lastCall.args[0].weather);
     });
   });
@@ -175,7 +175,7 @@
 
       var body = {
         cod: 200,
-        name: 'Nelson',
+        name: 'Blenheim',
         weather: [
           {
             main: 'cold'
@@ -195,7 +195,7 @@
       apiv1.getWeather2(reqMock, resMock);
 
       assert(resMock.status.lastCall.calledWith(200), 'Unexpected response:' + resMock.status.lastCall.args);
-      assert(resMock.send.lastCall.args[0].city === 'Nelson', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
+      assert(resMock.send.lastCall.args[0].city === 'Blenheim', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 78 F', 'Unexpected response:' + resMock.send.lastCall.args[0].weather);
     });
   });
