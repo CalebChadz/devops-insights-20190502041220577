@@ -9,6 +9,14 @@ var request = REQUEST.defaults( {
 
 var OPENWEATHERURL = "http://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=imperial";
 
+//function to change the farenheight temp to celcius.
+function fToC(fahrenheit) 
+{
+  var fTemp = fahrenheit;
+  var fToCel = (fTemp - 32) * 5 / 9;
+  return fToCel;
+} 
+
 exports.getWeather = function(req, res) {
 	var zip = req.query.zip;
 	if( (zip === null) || (typeof(zip) === 'undefined') ) {
@@ -27,7 +35,7 @@ exports.getWeather = function(req, res) {
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + fToC(body.main.temp) + ' C';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
     		} else {
@@ -58,7 +66,7 @@ exports.getWeather2 = function(req, res) {
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + fToC(body.main.temp) + ' C';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
     		} else {
