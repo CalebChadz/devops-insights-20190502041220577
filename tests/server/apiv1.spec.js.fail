@@ -18,10 +18,10 @@
         });
 
     	it('with valid zip code', function(done) {
-    		rqst(app).get('/api/v1/getWeather?zip=78613')
+    		rqst(app).get('/api/v1/getWeather?zip=7011')
     		.end(function(err, res) {
                     assert.equal(res.status, 2000);
-                    assert.equal(res.body.city, 'Anderson Mill');
+                    assert.equal(res.body.city, 'Nelson');
                     done();
                 });
     	});

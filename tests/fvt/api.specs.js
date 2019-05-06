@@ -22,13 +22,14 @@
         }
         request({
       		method: 'GET',
-              url: appUrl + '/api/v1/getWeather?zip=78613'
+              url: appUrl + '/api/v1/getWeather?zip=7011'
           }, function(err, resp, body) {
           	if(err) {
           		assert.fail('Failed to get the response');
           	} else {
               assert.equal(resp.statusCode, 200);
               var pbody = JSON.parse(body);
+              //check that these cities are not correct as it should be nelson.
               assert((pbody.city === 'Anderson Mill') || (pbody.city === 'Round Rock'), "City name does not match");
               done();
             }
@@ -47,6 +48,7 @@
           	if(err) {
           		assert.fail('Failed to get the response');
           	} else {
+          	  //if there is no zip url then this should throw a 400
               assert.equal(resp.statusCode, 400);
               done();
             }
@@ -60,7 +62,7 @@
         }
         request({
       		method: 'GET',
-              url: appUrl + '/api/v1/getWeather?zip=78641'
+              url: appUrl + '/api/v1/getWeather?zip=3204'
           }, function(err, resp, body) {
           	if(err) {
           		assert.fail('Failed to get the response');
