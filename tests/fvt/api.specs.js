@@ -22,7 +22,7 @@
         }
         request({
       		method: 'GET',
-              url: appUrl + '/api/v1/getWeather?q=hamilton'
+              url: appUrl + '/api/v1/getWeather?city=hamilton'
           }, function(err, resp, body) {
           	if(err) {
           		assert.fail('Failed to get the response');
@@ -62,7 +62,7 @@
         }
         request({
       		method: 'GET',
-              url: appUrl + '/api/v1/getWeather?q=auckland'
+              url: appUrl + '/api/v1/getWeather?city=auckland'
           }, function(err, resp, body) {
           	if(err) {
           		assert.fail('Failed to get the response');
