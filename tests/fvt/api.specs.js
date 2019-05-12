@@ -22,7 +22,7 @@
         }
         request({
       		method: 'GET',
-              url: appUrl + '/api/v1/getWeather?city=hamilton'
+              url: appUrl + '/api/v1/getWeather?q=hamilton'
           }, function(err, resp, body) {
           	if(err) {
           		assert.fail('Failed to get the response');
@@ -30,7 +30,7 @@
               assert.equal(resp.statusCode, 200);
               var pbody = JSON.parse(body);
               //check that these cities are not correct as it should be Blenheim.
-              assert((pbody.city === 'hamilton') || (pbody.city === 'Nelson'), "City name does not match");
+              assert((pbody.city === 'hamilton') || (pbody.city === 'Nelson'), "City name does not match" + pbody.city + " != " + "hamilton");
               done();
             }
         });
@@ -69,7 +69,7 @@
           	} else {
               assert.equal(resp.statusCode, 200);
               var pbody = JSON.parse(body);
-              assert(pbody.city === 'auckland', "City name does not match");
+              assert(pbody.city === 'auckland', "City name does not match" + pbody.city + " != " + "auckland");
               done();
             }
         });
