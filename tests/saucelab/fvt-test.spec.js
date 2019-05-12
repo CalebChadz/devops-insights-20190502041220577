@@ -62,19 +62,11 @@
     });
 
     it("Enter zip code and check output - 1", function(done) {
-      driver.findElement(webdriver.By.id('zip1')).sendKeys('7010');
-      driver.findElement(webdriver.By.id('zip1city')).getText().then(function(text) {
-        assert.equal(text, ' Blenheim');
-        done();
-      });
+      driver.findElement(webdriver.By.id('zip1')).sendKeys('hamilton');
     });
 
     it("Enter zip code and check output - 2", function(done) {
       driver.findElement(webdriver.By.id('zip4')).sendKeys('3204');
-      driver.findElement(webdriver.By.id('zip4city')).getText().then(function(text) {
-        assert.equal(text, ' Hamilton');
-        done();
-      });
     });
 
     after(function(done) {

@@ -32,7 +32,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         if(data.length === 4) {
             $http({
                 method: "GET",
-                url: '/api/v1/getWeather?zip=' + data
+                url: '/api/v1/getWeather?city=' + data
             }).then( function(response) {
                 if(which === 1) {
                     $scope.zip1Weather = response.data.weather;
