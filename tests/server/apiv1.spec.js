@@ -3,7 +3,7 @@
 
   'use strict';
 
-	var requireHelper = require('./requireHelper');
+  var requireHelper = require('./requireHelper');
   var apiv1 = requireHelper.require('tests/coverage/instrumented/routes/apiv1');
   var assert = require('chai').assert;
   var sinon = require('sinon');
@@ -95,7 +95,7 @@
           }
         ],
         main: {
-          temp: 78
+          temp: 26
         }
       };
 
@@ -182,7 +182,7 @@
           }
         ],
         main: {
-          temp: 78
+          temp: 26
         }
       };
 
