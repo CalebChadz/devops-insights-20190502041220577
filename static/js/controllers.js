@@ -1,3 +1,5 @@
+var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);
+
 
 function initMap1() {
     // The location of Uluru
@@ -8,9 +10,6 @@ function initMap1() {
     // The marker, positioned at Uluru
     var marker = new google.maps.Marker({ position: uluru, map: map });
 }
-
-
-var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);
 
 ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvider', '$httpProvider',
     function ($routeProvider, $locationProvider, $sceDelegateProvider, $httpProvider) {

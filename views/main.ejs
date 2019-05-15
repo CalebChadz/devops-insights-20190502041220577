@@ -14,14 +14,13 @@
         <div float="left">
             <% include includes/mainbody %>
         </div>
-
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhw-VBVBRnAAqSsSBNsuuHSQ8ZWPMA_LM&callback=initMap1" defer></script>
     </body>
     <script>
          angular.element(document).ready(function() {
             angular.bootstrap(document, ['ConsoleModule']);
         });
     </script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhw-VBVBRnAAqSsSBNsuuHSQ8ZWPMA_LM" defer></script>
 	<script>
 		initMap1();
 	</script>
