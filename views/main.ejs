@@ -9,16 +9,20 @@
         <script src="/bower_components/angular/angular.js"></script>
         <script src="/bower_components/angular-route/angular-route.js"></script>
         <script src="/js/controllers.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhw-VBVBRnAAqSsSBNsuuHSQ8ZWPMA_LM&callback=initMap1" defer></script>
     </head>
     <body>
         <div float="left">
             <% include includes/mainbody %>
         </div>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhw-VBVBRnAAqSsSBNsuuHSQ8ZWPMA_LM&callback=initMap1" defer></script>
     </body>
     <script>
          angular.element(document).ready(function() {
             angular.bootstrap(document, ['ConsoleModule']);
         });
     </script>
+	<script>
+		initMap1();
+	</script>
 </html>
