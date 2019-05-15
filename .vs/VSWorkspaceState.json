@@ -2,11 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\launchConfigurations",
+    "\\routes",
     "\\static",
     "\\static\\js",
-    "\\static\\partials",
-    "\\views",
-    "\\views\\includes"
+    "\\static\\sass",
+    "\\tests",
+    "\\tests\\fvt",
+    "\\tests\\saucelab",
+    "\\tests\\server",
+    "\\views"
   ],
+  "SelectedNode": "\\views\\main.ejs",
   "PreviewInSolutionExplorer": false
 }
