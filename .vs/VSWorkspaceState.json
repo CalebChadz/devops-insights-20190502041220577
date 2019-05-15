@@ -5,7 +5,6 @@
     "\\static",
     "\\static\\js",
     "\\static\\partials",
-    "\\tests\\fvt",
     "\\views",
     "\\views\\includes"
   ],
