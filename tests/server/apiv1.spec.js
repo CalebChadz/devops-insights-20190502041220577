@@ -88,7 +88,12 @@
 
       var body = {
         cod: 200,
-        name: 'hamilton',
+          name: 'hamilton',
+          coord:
+          {
+              lon: 10,
+              lat: 10
+          },
         weather: [
           {
             main: 'cold'
@@ -174,16 +179,21 @@
       };
 
       var body = {
-        cod: 200,
-        name: 'hamilton',
-        weather: [
+          cod: 200,
+          name: 'hamilton',
+          coord:
           {
-            main: 'cold'
+              lon: 10,
+              lat: 10
+          },
+          weather: [
+              {
+                  main: 'cold'
+              }
+          ],
+          main: {
+              temp: 26
           }
-        ],
-        main: {
-          temp: 26
-        }
       };
 
       var request = function( obj, callback ){
