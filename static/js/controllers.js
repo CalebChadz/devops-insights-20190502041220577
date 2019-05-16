@@ -102,30 +102,23 @@ function initMap1() {
     var markers;
 
     initMap1.updateMarkers = function () {
-        var markerLength = markers.length();
         if (markers) {
+            var markerLength = markers.length;
             for (var i = 0; i < markerLength; i++) {
-                markers[i].setPosition(locations[i]);
+                //remove all the markers
+                markers[i].setMap(null);
             }
+            markers.length = 0;
         }
-        else {
-            markers = locations.map(function (location, i) {
-                if (location.lat != 0) {
-                    return new google.maps.Marker({
-                        position: location,
-                        map: map,
-                        label: labels[i % labels.length]
-                    });
-                }
-                else {
-                    return new google.maps.Marker({
-                        position: location,
-                        map: map,
-                        label: labels[i % labels.length]
-                    });
-                }
-            });
-        }
+        markers = locations.map(function (location, i) {
+            if (location.lat != 0) {
+                return new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    label: labels[i % labels.length]
+                });
+            }
+        });
     };
 
     initMap1.updateMarkers();
