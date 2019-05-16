@@ -76,23 +76,27 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                 } else if(which === 4) {
                     $scope.zip4Weather = response.data.weather;
                     locations[which] = { lat: response.data.lattutude, lng: response.data.longitude };
-                } 
+                }
             });
-        } else {
+        }
+        else {
             if(which === 1) {
                 $scope.zip1Weather = "";
                 locations[which] = { lat: 0, lng: 0 };
-                } else if(which === 2) {
+            } else if(which === 2) {
                 $scope.zip2Weather = "";
                 locations[which] = { lat: 0, lng: 0 };
-                } else if(which === 3) {
+            } else if(which === 3) {
                 $scope.zip3Weather = "";
                 locations[which] = { lat: 0, lng: 0 };
-                } else if(which === 4) {
+            } else if(which === 4) {
                 $scope.zip4Weather = "";
                 locations[which] = { lat: 0, lng: 0 };
-                } 
+            } 
+           
         }
+        //reload the map henever there is a change.
+        initMap1();
     };
     
     }]);
