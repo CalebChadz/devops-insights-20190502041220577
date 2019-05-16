@@ -33,13 +33,10 @@
     </div>
     <div style="float:left; width:100%; padding-left:15px">
         <div style="float:left; width:100%">
-            <div class="headerText" style="width:10em">
-                <span><input id="clickLat" type="text" ng-model="latt"></span>
-            </div>
-            <div  class="headerText" style="width:10em">
-                <span><input id="clickLng" type="text" ng-model="long" ng-change="get($event)"></span>
-            </div>
             <div id="click1weather" class="underline">&nbsp;{{click1Weather}}</div>
+            <div>
+                <button id="clickButton" ng-click="get($event)">Get Weather</button>
+            </div>
         </div>
     </div>
 </div>

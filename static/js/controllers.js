@@ -3,7 +3,8 @@ var locations = [{ lat: 0, lng: 0 },
                  { lat: 0, lng: 0 },
                  { lat: 0, lng: 0 },
                  { lat: 0, lng: 0 }];
-
+var clickLattitude;
+var clickLongitude;
 
 function initMap1() {
     // The location of Uluru, center on new zealand
@@ -30,8 +31,8 @@ function initMap1() {
     //event listners
     google.maps.event.addListener(map, 'click', function (event) {
         placeMarker(event.latLng);
-        document.getElementById("clickLat").value = event.latLng.lat();
-        document.getElementById("clickLng").value = event.latLng.lng();
+        clickLattitude = event.latLng.lat();
+        clickLongitude = event.latLng.lng();
     });
 
     function placeMarker(location) {
@@ -125,12 +126,9 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         };
 
         $scope.get = function (event) {
-            var latt = $scope.latt;
-            var long = $scope.long;
-
             $http({
                 method: "GET",
-                url: '/api/v1/getWeather2?lat=' + latt + '&lon=' + long
+                url: '/api/v1/getWeather2?lat=' + clickLattitude + '&lon=' + clickLongitude
             }).then(function (response) {
                 $scope.click1Weather = response.data.weather;
             });
