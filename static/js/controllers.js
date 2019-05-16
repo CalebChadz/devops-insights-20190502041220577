@@ -7,7 +7,7 @@ var locations = [{ lat: 0, lng: 0 },
 
 
 function initMap1() {
-    // The location of Uluru
+    // The location of Uluru, center on new zealand
     var uluru = { lat: -40.6187416, lng: 171.7195556 };
     // The map, centered at Uluru
     var map = new google.maps.Map(
@@ -62,7 +62,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         } 
 
         //if the enter key is pressed.
-        if (data.length > 1 && $scope.keyval == 13) {
+        if (data.length > 1 && $scope.keyval === 13) {
             $http({
                 method: "GET",
                 url: '/api/v1/getWeather?city=' + data
@@ -98,7 +98,6 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                 $scope.zip4Weather = "";
                 locations[3] = { lat: 0, lng: 0 };
             }  
-            initMap1();
         }
     };
     
