@@ -102,18 +102,29 @@ function initMap1() {
     var markers;
 
     initMap1.updateMarkers = function () {
+        var markerLength = markers.length();
         if (markers) {
-            markers.length = 0;
-        }
-        markers = locations.map(function (location, i) {
-            if (location.lat != 0) {
-                return new google.maps.Marker({
-                    position: location,
-                    map: map,
-                    label: labels[i % labels.length]
-                });
+            for (var i = 0; i < markerLength; i++) {
+                markers[i].setPosition(locations[i])
             }
-        });
+        }
+        else {
+            markers = locations.map(function (location, i) {
+                if (location.lat != 0) {
+                    return new google.maps.Marker({
+                        position: location,
+                        map: map,
+                        label: labels[i % labels.length]
+                    });
+                }
+                else {
+                    return new google.maps.Marker({
+                        position: location,
+                        label: labels[i % labels.length]
+                    });
+                }
+            });
+        }
     };
 
     initMap1.updateMarkers();
