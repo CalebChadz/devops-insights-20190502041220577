@@ -11,6 +11,6 @@
     "\\views",
     "\\views\\includes"
   ],
-  "SelectedNode": "\\static\\partials\\Byzip.html",
+  "SelectedNode": "\\views\\includes\\maps.ejs",
   "PreviewInSolutionExplorer": false
 }

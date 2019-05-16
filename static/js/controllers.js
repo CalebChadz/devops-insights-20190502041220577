@@ -45,9 +45,12 @@ function initMap1() {
             marker.setPosition(location);
         }
     }
+    var infowindow = new google.maps.InfoWindow({
+        content: 'Latitude: ' + location.lat() +
+            '<br>Longitude: ' + location.lng()
+    });
+    infowindow.open(map, marker);
 }
-
-
 
 
 ConsoleModule.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', '$httpProvider',
@@ -120,6 +123,8 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                     $scope.zip4Weather = "";
                     locations[3] = { lat: 0, lng: 0 };
                 }
+                //reload the map henever there is a change.
+                initMap1();
             }
         };
 
