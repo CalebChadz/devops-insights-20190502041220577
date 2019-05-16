@@ -56,7 +56,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                         locations[3] = { lat: response.data.lattutude, lng: response.data.longitude };
                     }
                     //reload the map henever there is a change.
-                    initMap1().updateMarkers();
+                    initMap1.updateMarkers();
                 }); 
             }
             else {
@@ -74,7 +74,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                     locations[3] = { lat: 0, lng: 0 };
                 }
                 //reload the map henever there is a change.
-                initMap1().updateMarkers();
+                initMap1.updateMarkers();
             }
         };
 
@@ -101,6 +101,21 @@ function initMap1() {
 
     var markers;
     var markerCluster;
+
+    initMap1.updateMarkers = function () {
+        markers = locations.map(function (location, i) {
+            if (location.lat != 0) {
+                return new google.maps.Marker({
+                    position: location,
+                    label: labels[i % labels.length]
+                });
+            }
+        });
+
+        markerCluster = new MarkerClusterer(map, markers,
+            { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    }
+
     updateMarkers();
 
     var marker;
@@ -123,20 +138,6 @@ function initMap1() {
         else {
             marker.setPosition(location);
         }
-    }
-
-    function updateMarkers() {
-        markers = locations.map(function (location, i) {
-            if (location.lat != 0) {
-                return new google.maps.Marker({
-                    position: location,
-                    label: labels[i % labels.length]
-                });
-            }
-        });
-
-        markerCluster = new MarkerClusterer(map, markers,
-            { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     }
 }
 
