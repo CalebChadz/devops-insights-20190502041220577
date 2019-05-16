@@ -27,16 +27,23 @@ function initMap1() {
     var markerCluster = new MarkerClusterer(map, markers,
         { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
+    var marker;
     //event listnerrs
     google.maps.event.addListener(map, 'click', function (event) {
         placeMarker(event.latLng);
     });
 
     function placeMarker(location) {
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map
-        });
+        if (!marker) {
+            marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                draggable: true
+            });
+        }
+        else {
+            marker.setPosition(location);
+        }
     }
 }
 
