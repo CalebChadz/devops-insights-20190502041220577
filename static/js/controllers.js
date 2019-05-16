@@ -89,6 +89,10 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                 $scope.click1Weather = response.data.weather;
             });
         };
+
+        controller.getThe = $scope.get;
+
+
     }]);
 
 function initMap1() {
@@ -118,7 +122,7 @@ function initMap1() {
         placeMarker(event.latLng);
         clickLattitude = event.latLng.lat();
         clickLongitude = event.latLng.lng();
-        ConsoleModule.controller.$scope.get();
+        ConsoleModule.controller.getThe();
     });
 
     function placeMarker(location) {
