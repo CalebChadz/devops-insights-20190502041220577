@@ -30,14 +30,8 @@ function initMap1() {
 
     var marker;
 
-    //event listnerrs
-    google.maps.event.addListener(map, 'click', function (event) {     
-        updateMarker(event.latLng);
-        clickWeatherLocation = event.latLng;
-    });
-
     function updateMarker(location) {
-        if (marker) {
+        if ( marker ) {
             marker.setPosition(location);
         }
         else
@@ -48,6 +42,11 @@ function initMap1() {
             });
         }
     }
+    //event listnerrs
+    google.maps.event.addListener(map, 'click', function (event) {
+        updateMarker(event.latLng);
+        clickWeatherLocation = event.latLng;
+    });
 }
 
 
