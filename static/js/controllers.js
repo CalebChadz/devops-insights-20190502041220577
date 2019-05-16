@@ -116,7 +116,7 @@ function initMap1() {
             { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     };
 
-    updateMarkers();
+    initMap1.updateMarkers();
 
     var marker;
     //event listners
