@@ -1,11 +1,10 @@
 var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);
 var locations = [{ lat: 0, lng: 0 },
-                 { lat: 0, lng: 0 },
-                 { lat: 0, lng: 0 },
-                 { lat: 0, lng: 0 },
-                 { lat: 0, lng: 0 }];
+{ lat: 0, lng: 0 },
+{ lat: 0, lng: 0 },
+{ lat: 0, lng: 0 }];
 
-var clickWeatherLocation;
+var keyVal = 0;
 
 function initMap1() {
     // The location of Uluru, center on new zealand
@@ -28,50 +27,51 @@ function initMap1() {
     var markerCluster = new MarkerClusterer(map, markers,
         { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
+    //event listnerrs
+    google.maps.event.addListener(map, 'click', function (event) {
+        placeMarker(event.latLng);
+    });
+
     function placeMarker(location) {
-        var clickedLocation = new google.maps.LatLng(location);
         var marker = new google.maps.Marker({
             position: location,
             map: map
         });
     }
-
-    google.maps.event.addListener(map, 'click', function (event) {
-        placeMarker(event.latLng);
 }
 
 
 
 
-ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvider', '$httpProvider',
+ConsoleModule.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', '$httpProvider',
     function ($routeProvider, $locationProvider, $sceDelegateProvider, $httpProvider) {
-    $routeProvider.when('/', {
-        templateUrl: '/partials/Byzip.html',
-        controller: 'wcontroller',
-        controllerAs: 'wcontroller'
-    });
-}]);
+        $routeProvider.when('/', {
+            templateUrl: '/partials/Byzip.html',
+            controller: 'wcontroller',
+            controllerAs: 'wcontroller'
+        });
+    }]);
 
 ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$timeout', '$sce',
-    function($scope, $http, $routeParams, $timeout, $sce) {
+    function ($scope, $http, $routeParams, $timeout, $sce) {
 
-    $scope.somemessage = "Some weather";
-    $scope.zip1Weather = "";
+        $scope.somemessage = "Some weather";
+        $scope.zip1Weather = "";
 
         $scope.zip = function (which, event) {
 
-        $scope.keyval = event.keyCode;
+            $scope.keyval = event.keyCode;
 
-        var data = "";
-        if(which === 1) {
-            data = $scope.zip1m;
-        } else if(which === 2) {
-            data = $scope.zip2m;
-        } else if(which === 3) {
-            data = $scope.zip3m;
-        } else if(which === 4) {
-            data = $scope.zip4m;
-        } 
+            var data = "";
+            if (which === 1) {
+                data = $scope.zip1m;
+            } else if (which === 2) {
+                data = $scope.zip2m;
+            } else if (which === 3) {
+                data = $scope.zip3m;
+            } else if (which === 4) {
+                data = $scope.zip4m;
+            }
 
             //if the enter key is pressed.
             if (data.length > 1) {
@@ -98,22 +98,22 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 
                     });
                 }
-        }
-        else {
-            if(which === 1) {
-                $scope.zip1Weather = "";
-                locations[0] = { lat: 0, lng: 0 };
-            } else if(which === 2) {
-                $scope.zip2Weather = "";
-                locations[1] = { lat: 0, lng: 0 };
-            } else if(which === 3) {
-                $scope.zip3Weather = "";
-                locations[2] = { lat: 0, lng: 0 };
-            } else if(which === 4) {
-                $scope.zip4Weather = "";
-                locations[3] = { lat: 0, lng: 0 };
-            }  
-        }
-    };
-    
+            }
+            else {
+                if (which === 1) {
+                    $scope.zip1Weather = "";
+                    locations[0] = { lat: 0, lng: 0 };
+                } else if (which === 2) {
+                    $scope.zip2Weather = "";
+                    locations[1] = { lat: 0, lng: 0 };
+                } else if (which === 3) {
+                    $scope.zip3Weather = "";
+                    locations[2] = { lat: 0, lng: 0 };
+                } else if (which === 4) {
+                    $scope.zip4Weather = "";
+                    locations[3] = { lat: 0, lng: 0 };
+                }
+            }
+        };
+
     }]);
