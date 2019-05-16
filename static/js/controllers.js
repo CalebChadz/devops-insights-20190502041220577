@@ -28,21 +28,16 @@ function initMap1() {
     var markerCluster = new MarkerClusterer(map, markers,
         { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
-    var marker;
-    //function that will allow one additional marker to exist at the click location.
     function placeMarker(location) {
-  
-            marker = new google.maps.Marker({
-                position: locaation,
-                map: map
-            });
-        
+        var clickedLocation = new google.maps.LatLng(location);
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
     }
-    //event listnerrs
+
     google.maps.event.addListener(map, 'click', function (event) {
         placeMarker(event.latLng);
-        clickWeatherLocation = event.latLng;
-    });
 }
 
 
