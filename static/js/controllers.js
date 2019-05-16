@@ -86,6 +86,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                 url: '/api/v1/getWeather2?lat=' + clickLattitude + '&lon=' + clickLongitude
             }).then(function (response) {
                 $scope.click1Weather = response.data.weather;
+                $scope.click1City = response.data.city;
             });
         };
     }]);
