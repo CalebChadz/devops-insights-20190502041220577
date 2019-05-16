@@ -56,7 +56,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                         locations[3] = { lat: response.data.lattutude, lng: response.data.longitude };
                     }
                     //reload the map henever there is a change.
-                    initMap1().updateMarkers();;
+                    initMap1().updateMarkers();
                 }); 
             }
             else {
