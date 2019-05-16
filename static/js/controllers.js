@@ -44,9 +44,9 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 
     $scope.somemessage = "Some weather";
     $scope.zip1Weather = "";
-    $scope.getKeys = function (event) {
-        $scope.keyval = event.keyCode
-    }
+        $scope.getKeys = function (event) {
+            $scope.keyval = event.keyCode;
+        };
 
     $scope.zip = function(which) {
 
