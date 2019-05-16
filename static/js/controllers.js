@@ -131,7 +131,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 
             $http({
                 method: "GET",
-                url: '/api/v1/getWeather?lat=' + latt + '&lon=' + long
+                url: '/api/v1/getWeather3?lat=' + latt + '&lon=' + long
             }).then(function (response) {
                 $scope.click1Weather = response.data.weather;
             })
