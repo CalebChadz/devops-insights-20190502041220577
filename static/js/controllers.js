@@ -36,6 +36,24 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                 data = $scope.zip4m;
             }
 
+
+            if ($scope.keyval === 8) {
+                if (which === 1) {
+                    $scope.zip1Weather = "";
+                    locations[0] = { lat: 0, lng: 0 };
+                } else if (which === 2) {
+                    $scope.zip2Weather = "";
+                    locations[1] = { lat: 0, lng: 0 };
+                } else if (which === 3) {
+                    $scope.zip3Weather = "";
+                    locations[2] = { lat: 0, lng: 0 };
+                } else if (which === 4) {
+                    $scope.zip4Weather = "";
+                    locations[3] = { lat: 0, lng: 0 };
+                }
+                //reload the map henever there is a change.
+                initMap1.updateMarkers();   
+            }
             //if the enter key is pressed.
             if ($scope.keyval === 13) {
                 $http({
@@ -58,9 +76,6 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                     //reload the map henever there is a change.
                     initMap1.updateMarkers();
                 }); 
-            }
-            else if (data.length === 0) {
-                initMap1.updateMarkers();
             }
             else {
                 if (which === 1) {
