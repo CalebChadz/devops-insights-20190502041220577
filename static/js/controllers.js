@@ -4,7 +4,6 @@ var locations = [{ lat: 0, lng: 0 },
                  { lat: 0, lng: 0 },
                  { lat: 0, lng: 0 }];
 
-var keyVal = 0;
 
 function initMap1() {
     // The location of Uluru, center on new zealand
@@ -28,11 +27,11 @@ function initMap1() {
         { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
     var marker;
-    //event listnerrs
+    //event listners
     google.maps.event.addListener(map, 'click', function (event) {
         placeMarker(event.latLng);
-        document.getElementById("clickLat").innerHTML = "Lattitude: " + event.latLng.lat();
-        document.getElementById("clickLng").innerHTML = "Longitude:" + event.latLng.lng();
+        document.getElementById("clickLat").value = "Lattitude: " + event.latLng.lat();
+        document.getElementById("clickLng").value = "Longitude:" + event.latLng.lng();
     });
 
     function placeMarker(location) {
