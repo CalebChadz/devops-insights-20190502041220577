@@ -102,24 +102,39 @@ function initMap1() {
     var markers = [];
 
     initMap1.updateMarkers = function () {
-        if (markers != []) {
-            var markerLength = markers.length;
-            for (var i = 0; i < markerLength; i++) {
-                //remove all the markers
-                markers[i].setMap(null);
-            }
-            markers.length = 0;
+        //delete exisitngg markers
+        deleteMarkers();
+        //add new markers.
+        var locationLength = locations.length;
+        for (var o = 0; o < locationLength; o++) {
+            addMarker(locations[o]);
         }
-        markers = locations.map(function (location, i) {
-            if (location.lat != 0) {
-                return new google.maps.Marker({
-                    position: location,
-                    map: map,
-                    label: labels[i % labels.length]
-                });
-            }
-        });
+        
     };
+
+    function addMarker(location) {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        markers.push(marker);
+    }
+
+    // Sets the map on all markers in the array.
+    function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+        }
+    }
+
+    function clearMarkers() {
+        setMapOnAll(null);
+    }
+
+    function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+    }
 
     initMap1.updateMarkers();
 
