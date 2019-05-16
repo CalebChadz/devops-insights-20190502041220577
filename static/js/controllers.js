@@ -1,6 +1,5 @@
 var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);
-var locations = [{ lat: -40.6187416, lng: 171.7195556 },
-                 { lat: 0, lng: 0 },
+var locations = [{ lat: 0, lng: 0 },
                  { lat: 0, lng: 0 },
                  { lat: 0, lng: 0 },
                  { lat: 0, lng: 0 }];
@@ -9,7 +8,7 @@ var locations = [{ lat: -40.6187416, lng: 171.7195556 },
 
 function initMap1() {
     // The location of Uluru
-    var uluru = locations[0];
+    var uluru = { lat: -40.6187416, lng: 171.7195556 };
     // The map, centered at Uluru
     var map = new google.maps.Map(
         document.getElementById('map'), { zoom: 5, center: uluru });
@@ -45,6 +44,9 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 
     $scope.somemessage = "Some weather";
     $scope.zip1Weather = "";
+    $scope.getKeys = function (event) {
+        $scope.keyval = event.keyCode
+    }
 
     $scope.zip = function(which) {
 
@@ -59,44 +61,45 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             data = $scope.zip4m;
         } 
 
-        if(data.length > 4) {
+        //if the enter key is pressed.
+        if (data.length > 1 && $scope.keyval == 13) {
             $http({
                 method: "GET",
                 url: '/api/v1/getWeather?city=' + data
             }).then( function(response) {
                 if(which === 1) {
                     $scope.zip1Weather = response.data.weather;
-                    locations[which] = { lat: response.data.lattutude, lng: response.data.longitude };
+                    locations[0] = { lat: response.data.lattutude, lng: response.data.longitude };
                 } else if(which === 2) {
                     $scope.zip2Weather = response.data.weather;
-                    locations[which] = { lat: response.data.lattutude, lng: response.data.longitude };
+                    locations[1] = { lat: response.data.lattutude, lng: response.data.longitude };
                 } else if(which === 3) {
                     $scope.zip3Weather = response.data.weather;
-                    locations[which] = { lat: response.data.lattutude, lng: response.data.longitude };
+                    locations[2] = { lat: response.data.lattutude, lng: response.data.longitude };
                 } else if(which === 4) {
                     $scope.zip4Weather = response.data.weather;
-                    locations[which] = { lat: response.data.lattutude, lng: response.data.longitude };
+                    locations[3] = { lat: response.data.lattutude, lng: response.data.longitude };
                 }
+                //reload the map henever there is a change.
+                initMap1();
             });
         }
         else {
             if(which === 1) {
                 $scope.zip1Weather = "";
-                locations[which] = { lat: 0, lng: 0 };
+                locations[0] = { lat: 0, lng: 0 };
             } else if(which === 2) {
                 $scope.zip2Weather = "";
-                locations[which] = { lat: 0, lng: 0 };
+                locations[1] = { lat: 0, lng: 0 };
             } else if(which === 3) {
                 $scope.zip3Weather = "";
-                locations[which] = { lat: 0, lng: 0 };
+                locations[2] = { lat: 0, lng: 0 };
             } else if(which === 4) {
                 $scope.zip4Weather = "";
-                locations[which] = { lat: 0, lng: 0 };
-            } 
-           
+                locations[3] = { lat: 0, lng: 0 };
+            }  
+            initMap1();
         }
-        //reload the map henever there is a change.
-        initMap1();
     };
     
     }]);
