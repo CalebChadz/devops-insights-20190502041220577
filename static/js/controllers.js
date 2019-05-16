@@ -100,9 +100,11 @@ function initMap1() {
     // Add some markers to them map
 
     var markers;
-    var markerCluster;
 
     initMap1.updateMarkers = function () {
+        if (markers) {
+            markers.length = 0;
+        }
         markers = locations.map(function (location, i) {
             if (location.lat != 0) {
                 return new google.maps.Marker({
@@ -111,9 +113,6 @@ function initMap1() {
                 });
             }
         });
-
-        markerCluster = new MarkerClusterer(map, markers,
-            { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     };
 
     initMap1.updateMarkers();
