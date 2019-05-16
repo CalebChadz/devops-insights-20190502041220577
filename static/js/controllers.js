@@ -33,6 +33,7 @@ function initMap1() {
         placeMarker(event.latLng);
         clickLattitude = event.latLng.lat();
         clickLongitude = event.latLng.lng();
+        ConsoleModule.controller.$scope.get();
     });
 
     function placeMarker(location) {
@@ -125,7 +126,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             }
         };
 
-        $scope.get = function (event) {
+        $scope.get = function () {
             $http({
                 method: "GET",
                 url: '/api/v1/getWeather2?lat=' + clickLattitude + '&lon=' + clickLongitude
