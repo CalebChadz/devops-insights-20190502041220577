@@ -5,13 +5,11 @@
     "\\routes",
     "\\static",
     "\\static\\js",
+    "\\static\\partials",
     "\\static\\sass",
     "\\tests",
-    "\\tests\\fvt",
-    "\\tests\\saucelab",
-    "\\tests\\server",
-    "\\views"
+    "\\views",
+    "\\views\\includes"
   ],
-  "SelectedNode": "\\views\\main.ejs",
   "PreviewInSolutionExplorer": false
 }
