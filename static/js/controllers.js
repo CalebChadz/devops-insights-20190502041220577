@@ -4,7 +4,7 @@ var locations = [{ lat: 0, lng: 0 },
                  { lat: 0, lng: 0 },
                  { lat: 0, lng: 0 }];
 
-
+var keyVal = 0;
 
 function initMap1() {
     // The location of Uluru, center on new zealand
@@ -44,9 +44,10 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 
     $scope.somemessage = "Some weather";
     $scope.zip1Weather = "";
-        $scope.getKeys = function (event) {
-            $scope.keyval = event.keyCode;
-        };
+    $scope.getKeys = function (event) {
+        $scope.keyval = event.keyCode;
+        keyVal = $scope.keyval;
+    };
 
     $scope.zip = function(which) {
 
@@ -62,7 +63,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         } 
 
         //if the enter key is pressed.
-        if (data.length > 1 && $scope.keyval === 13) {
+        if (data.length > 1 && keyVal === 13) {
             $http({
                 method: "GET",
                 url: '/api/v1/getWeather?city=' + data
