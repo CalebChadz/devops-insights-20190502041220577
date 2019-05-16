@@ -40,38 +40,8 @@ exports.getWeather = function(req, res) {
 router.get('/getWeather', exports.getWeather);
 
 
-exports.getWeather2 = function(req, res) {
-	var city = req.query.city;
-	if( (city === null) || (typeof(city) === 'undefined') ) {
-		return res.status(400).send('city missing');
-	}
 
-	var aurl = OPENWEATHERURL + '&q=' + city + ',nz';
-
-	request({
-		method: 'GET',
-        url: aurl,
-  		json: true
-    }, function(err, resp, body) {
-    	if(err) {
-    		res.status(400).send('Failed to get the data');
-    		//console.error("Failed to send request to openweathermap.org", err);
-    	} else {
-    		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
-                var response = { city: body.name, weather: weath, longitude: body.coord.lon, lattutude: body.coord.lat };
-    			return res.status(200).send(response);
-    		} else {
-                return res.status(400).send({msg:'Failed'});
-            }
-    	}
-    });
-
-};
-router.get('/getWeather2', exports.getWeather2);
-
-
-exports.getWeather3 = function (req, res) {
+exports.getWeather2 = function (req, res) {
     var lat = req.query.lat;
     var lon = req.query.lon;
     if ((lat === null) || (typeof (lat) === 'undefined')) {
@@ -100,7 +70,7 @@ exports.getWeather3 = function (req, res) {
     });
 
 };
-router.get('/getWeather3', exports.getWeather3);
+router.get('/getWeather2', exports.getWeather3);
 
 
 exports.router = router;
