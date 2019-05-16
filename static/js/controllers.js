@@ -59,6 +59,9 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                     initMap1.updateMarkers();
                 }); 
             }
+            else if (data.length === 0) {
+                initMap1.updateMarkers();
+            }
             else {
                 if (which === 1) {
                     $scope.zip1Weather = "";
@@ -126,11 +129,11 @@ function initMap1() {
             markers[i].setMap(map);
         }
     }
-
+    //clear the markers by removing their map
     function clearMarkers() {
         setMapOnAll(null);
     }
-
+    //delete markers by removing them from map and removing their location.
     function deleteMarkers() {
         clearMarkers();
         markers = [];
