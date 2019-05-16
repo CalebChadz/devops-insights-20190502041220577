@@ -37,29 +37,27 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             }
 
             //if the enter key is pressed.
-            if (data.length > 1) {
-                if ($scope.keyval === 13) {
-                    $http({
-                        method: "GET",
-                        url: '/api/v1/getWeather?city=' + data
-                    }).then(function (response) {
-                        if (which === 1) {
-                            $scope.zip1Weather = response.data.weather;
-                            locations[0] = { lat: response.data.lattutude, lng: response.data.longitude };
-                        } else if (which === 2) {
-                            $scope.zip2Weather = response.data.weather;
-                            locations[1] = { lat: response.data.lattutude, lng: response.data.longitude };
-                        } else if (which === 3) {
-                            $scope.zip3Weather = response.data.weather;
-                            locations[2] = { lat: response.data.lattutude, lng: response.data.longitude };
-                        } else if (which === 4) {
-                            $scope.zip4Weather = response.data.weather;
-                            locations[3] = { lat: response.data.lattutude, lng: response.data.longitude };
-                        }
-                        //reload the map henever there is a change.
-                        initMap1();
-                    });
-                }
+            if ($scope.keyval === 13) {
+                $http({
+                    method: "GET",
+                    url: '/api/v1/getWeather?city=' + data
+                }).then(function (response) {
+                    if (which === 1) {
+                        $scope.zip1Weather = response.data.weather;
+                        locations[0] = { lat: response.data.lattutude, lng: response.data.longitude };
+                    } else if (which === 2) {
+                        $scope.zip2Weather = response.data.weather;
+                        locations[1] = { lat: response.data.lattutude, lng: response.data.longitude };
+                    } else if (which === 3) {
+                        $scope.zip3Weather = response.data.weather;
+                        locations[2] = { lat: response.data.lattutude, lng: response.data.longitude };
+                    } else if (which === 4) {
+                        $scope.zip4Weather = response.data.weather;
+                        locations[3] = { lat: response.data.lattutude, lng: response.data.longitude };
+                    }
+                    //reload the map henever there is a change.
+                    initMap1().updateMarkers();;
+                }); 
             }
             else {
                 if (which === 1) {
@@ -76,7 +74,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                     locations[3] = { lat: 0, lng: 0 };
                 }
                 //reload the map henever there is a change.
-                initMap1();
+                initMap1().updateMarkers();
             }
         };
 
@@ -100,6 +98,7 @@ function initMap1() {
     //create some lables for the markers
     var labels = 'ABCDE';
     // Add some markers to them map
+
     var markers = locations.map(function (location, i) {
         if (location.lat != 0) {
             return new google.maps.Marker({
@@ -132,6 +131,20 @@ function initMap1() {
         else {
             marker.setPosition(location);
         }
+    }
+
+    function updateMarkers() {
+        markers = locations.map(function (location, i) {
+            if (location.lat != 0) {
+                return new google.maps.Marker({
+                    position: location,
+                    label: labels[i % labels.length]
+                });
+            }
+        });
+
+        var markerCluster = new MarkerClusterer(map, markers,
+            { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     }
 }
 
