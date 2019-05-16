@@ -109,6 +109,7 @@ function initMap1() {
             if (location.lat != 0) {
                 return new google.maps.Marker({
                     position: location,
+                    map: map,
                     label: labels[i % labels.length]
                 });
             }
