@@ -6,51 +6,6 @@ var locations = [{ lat: 0, lng: 0 },
 var clickLattitude;
 var clickLongitude;
 
-function initMap1() {
-    // The location of Uluru, center on new zealand
-    var uluru = { lat: -40.6187416, lng: 171.7195556 };
-    // The map, centered at Uluru
-    var map = new google.maps.Map(
-        document.getElementById('map'), { zoom: 5, center: uluru });
-    //create some lables for the markers
-    var labels = 'ABCDE';
-    // Add some markers to them map
-    var markers = locations.map(function (location, i) {
-        if (location.lat != 0) {
-            return new google.maps.Marker({
-                position: location,
-                label: labels[i % labels.length]
-            });
-        }
-    });
-
-    var markerCluster = new MarkerClusterer(map, markers,
-        { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
-
-    var marker;
-    //event listners
-    google.maps.event.addListener(map, 'click', function (event) {
-        placeMarker(event.latLng);
-        clickLattitude = event.latLng.lat();
-        clickLongitude = event.latLng.lng();
-        ConsoleModule.controller.$scope.get();
-    });
-
-    function placeMarker(location) {
-        if (!marker) {
-            marker = new google.maps.Marker({
-                position: location,
-                map: map,
-                draggable: true
-            });
-        }
-        else {
-            marker.setPosition(location);
-        }
-    }
-}
-
-
 ConsoleModule.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', '$httpProvider',
     function ($routeProvider, $locationProvider, $sceDelegateProvider, $httpProvider) {
         $routeProvider.when('/', {
@@ -135,3 +90,47 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             });
         };
     }]);
+
+function initMap1() {
+    // The location of Uluru, center on new zealand
+    var uluru = { lat: -40.6187416, lng: 171.7195556 };
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), { zoom: 5, center: uluru });
+    //create some lables for the markers
+    var labels = 'ABCDE';
+    // Add some markers to them map
+    var markers = locations.map(function (location, i) {
+        if (location.lat != 0) {
+            return new google.maps.Marker({
+                position: location,
+                label: labels[i % labels.length]
+            });
+        }
+    });
+
+    var markerCluster = new MarkerClusterer(map, markers,
+        { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+
+    var marker;
+    //event listners
+    google.maps.event.addListener(map, 'click', function (event) {
+        placeMarker(event.latLng);
+        clickLattitude = event.latLng.lat();
+        clickLongitude = event.latLng.lng();
+        ConsoleModule.controller.$scope.get();
+    });
+
+    function placeMarker(location) {
+        if (!marker) {
+            marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                draggable: true
+            });
+        }
+        else {
+            marker.setPosition(location);
+        }
+    }
+}
