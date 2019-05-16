@@ -58,7 +58,6 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                         }
                         //reload the map henever there is a change.
                         initMap1();
-
                     });
                 }
             }
@@ -89,8 +88,6 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                 $scope.click1Weather = response.data.weather;
             });
         };
-
-
     }]);
 
 function initMap1() {
@@ -120,10 +117,7 @@ function initMap1() {
         placeMarker(event.latLng);
         clickLattitude = event.latLng.lat();
         clickLongitude = event.latLng.lng();
-        var scope = angular.element(document.getElementById("wcontroller")).scope();
-        scope.$apply(function () {
-            scope.get();
-        });
+        updateWeather();
     });
 
     function placeMarker(location) {
@@ -138,4 +132,11 @@ function initMap1() {
             marker.setPosition(location);
         }
     }
+}
+
+function updateWeather() {
+    var scope = angular.element(document.getElementById("wcontroller")).scope();
+    scope.$apply(function () {
+        scope.get();
+    });
 }
