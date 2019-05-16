@@ -29,22 +29,18 @@ function initMap1() {
         { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
     var marker;
-
-    function updateMarker(location) {
-        if ( marker ) {
-            marker.setPosition(location);
-        }
-        else
-        {
+    //function that will allow one additional marker to exist at the click location.
+    function placeMarker(location) {
+  
             marker = new google.maps.Marker({
                 position: locaation,
                 map: map
             });
-        }
+        
     }
     //event listnerrs
     google.maps.event.addListener(map, 'click', function (event) {
-        updateMarker(event.latLng);
+        placeMarker(event.latLng);
         clickWeatherLocation = event.latLng;
     });
 }
