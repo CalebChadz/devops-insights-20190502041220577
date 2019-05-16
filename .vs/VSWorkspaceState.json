@@ -1,16 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\launchConfigurations",
-    "\\routes",
     "\\static",
     "\\static\\js",
     "\\static\\partials",
     "\\static\\sass",
     "\\tests",
+    "\\tests\\server",
     "\\views",
     "\\views\\includes"
   ],
-  "SelectedNode": "\\views\\includes\\maps.ejs",
+  "SelectedNode": "\\static\\sass\\default.scss",
   "PreviewInSolutionExplorer": false
 }
