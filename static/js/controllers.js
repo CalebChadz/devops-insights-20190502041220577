@@ -31,8 +31,8 @@ function initMap1() {
     //event listnerrs
     google.maps.event.addListener(map, 'click', function (event) {
         placeMarker(event.latLng);
-        document.getElementById("clickLat").innerHTML = "Lattitude: " + event.latLng.lat;
-        document.getElementById("clickLng").innerHTML = "Longitude:" + event.latLng.lng;
+        document.getElementById("clickLat").innerHTML = "Lattitude: " + event.latLng.lat();
+        document.getElementById("clickLng").innerHTML = "Longitude:" + event.latLng.lng();
     });
 
     function placeMarker(location) {
