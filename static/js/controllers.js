@@ -2,9 +2,10 @@ var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);
 var locations = [{ lat: 0, lng: 0 },
                  { lat: 0, lng: 0 },
                  { lat: 0, lng: 0 },
+                 { lat: 0, lng: 0 },
                  { lat: 0, lng: 0 }];
 
-var keyVal = 0;
+var clickWeatherLocation;
 
 function initMap1() {
     // The location of Uluru, center on new zealand
@@ -26,6 +27,27 @@ function initMap1() {
 
     var markerCluster = new MarkerClusterer(map, markers,
         { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+
+    var marker;
+
+    //event listnerrs
+    google.maps.event.addListener(map, 'click', function (event) {     
+        updateMarker(event.latLng);
+        clickWeatherLocation = event.latLng;
+    });
+
+    function updateMarker(location) {
+        if (marker) {
+            marker.setPosition(location);
+        }
+        else
+        {
+            marker = new google.maps.Marker({
+                position: locaation,
+                map: map
+            });
+        }
+    }
 }
 
 
