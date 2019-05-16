@@ -40,7 +40,6 @@ exports.getWeather = function(req, res) {
 router.get('/getWeather', exports.getWeather);
 
 
-
 exports.getWeather2 = function (req, res) {
     var lat = req.query.lat;
     var lon = req.query.lon;

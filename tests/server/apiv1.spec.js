@@ -136,7 +136,8 @@
     it('with valid zip code and error from request call', function() {
       reqMock = {
         query: {
-          city: 'hamilton'
+              lat: '-40.6187416',
+              lon: '171.7195556'
         }
       };
 
@@ -155,7 +156,8 @@
     it('with incomplete zip code', function() {
       reqMock = {
         query: {
-          city: 'hamilton'
+              lat: '-40.6187416',
+              lon: '171.7195556'
         }
       };
 
