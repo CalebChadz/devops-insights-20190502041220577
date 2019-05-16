@@ -135,7 +135,7 @@ function initMap1() {
 }
 
 function updateWeather() {
-    var scope = angular.element(document.getElementById("wcontroller")).scope();
+    var scope = angular.element(document.getElementById("click1weather")).scope();
     scope.$apply(function () {
         scope.get();
     });
