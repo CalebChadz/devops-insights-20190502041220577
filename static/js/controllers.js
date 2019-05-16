@@ -99,10 +99,10 @@ function initMap1() {
     var labels = 'ABCDE';
     // Add some markers to them map
 
-    var markers;
+    var markers = [];
 
     initMap1.updateMarkers = function () {
-        if (markers) {
+        if (markers != []) {
             var markerLength = markers.length;
             for (var i = 0; i < markerLength; i++) {
                 //remove all the markers
