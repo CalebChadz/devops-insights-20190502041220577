@@ -44,12 +44,10 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 
     $scope.somemessage = "Some weather";
     $scope.zip1Weather = "";
-    $scope.getKeys = function (event) {
-        $scope.keyval = event.keyCode;
-        keyVal = $scope.keyval;
-    };
 
-    $scope.zip = function(which) {
+        $scope.zip = function (which, event) {
+
+        $scope.keyval = event.keyCode;
 
         var data = "";
         if(which === 1) {
@@ -62,8 +60,8 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             data = $scope.zip4m;
         } 
 
-        //if the enter key is pressed.
-        if (data.length > 1 && keyVal === 13) {
+            //if the enter key is pressed.
+            if (data.length > 1 && $sope.keyval === 13) {
             $http({
                 method: "GET",
                 url: '/api/v1/getWeather?city=' + data
