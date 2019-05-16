@@ -61,27 +61,30 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         } 
 
             //if the enter key is pressed.
-            if (data.length > 1 && $sope.keyval === 13) {
-            $http({
-                method: "GET",
-                url: '/api/v1/getWeather?city=' + data
-            }).then( function(response) {
-                if(which === 1) {
-                    $scope.zip1Weather = response.data.weather;
-                    locations[0] = { lat: response.data.lattutude, lng: response.data.longitude };
-                } else if(which === 2) {
-                    $scope.zip2Weather = response.data.weather;
-                    locations[1] = { lat: response.data.lattutude, lng: response.data.longitude };
-                } else if(which === 3) {
-                    $scope.zip3Weather = response.data.weather;
-                    locations[2] = { lat: response.data.lattutude, lng: response.data.longitude };
-                } else if(which === 4) {
-                    $scope.zip4Weather = response.data.weather;
-                    locations[3] = { lat: response.data.lattutude, lng: response.data.longitude };
+            if (data.length > 1) {
+                if ($scope.keyval === 13) {
+                    $http({
+                        method: "GET",
+                        url: '/api/v1/getWeather?city=' + data
+                    }).then(function (response) {
+                        if (which === 1) {
+                            $scope.zip1Weather = response.data.weather;
+                            locations[0] = { lat: response.data.lattutude, lng: response.data.longitude };
+                        } else if (which === 2) {
+                            $scope.zip2Weather = response.data.weather;
+                            locations[1] = { lat: response.data.lattutude, lng: response.data.longitude };
+                        } else if (which === 3) {
+                            $scope.zip3Weather = response.data.weather;
+                            locations[2] = { lat: response.data.lattutude, lng: response.data.longitude };
+                        } else if (which === 4) {
+                            $scope.zip4Weather = response.data.weather;
+                            locations[3] = { lat: response.data.lattutude, lng: response.data.longitude };
+                        }
+                        //reload the map henever there is a change.
+                        initMap1();
+
+                    });
                 }
-                //reload the map henever there is a change.
-                initMap1();
-            });
         }
         else {
             if(which === 1) {
