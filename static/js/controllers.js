@@ -1,8 +1,8 @@
 var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);
 var locations = [{ lat: 0, lng: 0 },
-{ lat: 0, lng: 0 },
-{ lat: 0, lng: 0 },
-{ lat: 0, lng: 0 }];
+                 { lat: 0, lng: 0 },
+                 { lat: 0, lng: 0 },
+                 { lat: 0, lng: 0 }];
 
 var keyVal = 0;
 
@@ -31,6 +31,8 @@ function initMap1() {
     //event listnerrs
     google.maps.event.addListener(map, 'click', function (event) {
         placeMarker(event.latLng);
+        document.getElementById("clickLat").innerHTML = "Lattitude: " + event.latLng.lat;
+        document.getElementById("clickLng").innerHTML = "Longitude:" + event.latLng.lng;
     });
 
     function placeMarker(location) {
@@ -45,11 +47,6 @@ function initMap1() {
             marker.setPosition(location);
         }
     }
-    var infowindow = new google.maps.InfoWindow({
-        content: 'Latitude: ' + location.lat() +
-            '<br>Longitude: ' + location.lng()
-    });
-    infowindow.open(map, marker);
 }
 
 
@@ -128,4 +125,15 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             }
         };
 
+        $scope.get = function (event) {
+            var latt = $scope.latt;
+            var long = $scope.long;
+
+            $http({
+                method: "GET",
+                url: '/api/v1/getWeather?lat=' + latt + '&lon=' + long
+            }).then(function (response) {
+                $scope.click1Weather = response.data.weather;
+            })
+        };
     }]);
