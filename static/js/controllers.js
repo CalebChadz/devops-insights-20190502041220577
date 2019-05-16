@@ -99,17 +99,9 @@ function initMap1() {
     var labels = 'ABCDE';
     // Add some markers to them map
 
-    var markers = locations.map(function (location, i) {
-        if (location.lat != 0) {
-            return new google.maps.Marker({
-                position: location,
-                label: labels[i % labels.length]
-            });
-        }
-    });
-
-    var markerCluster = new MarkerClusterer(map, markers,
-        { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    var markers;
+    var markerCluster;
+    updateMarkers();
 
     var marker;
     //event listners
@@ -143,7 +135,7 @@ function initMap1() {
             }
         });
 
-        var markerCluster = new MarkerClusterer(map, markers,
+        markerCluster = new MarkerClusterer(map, markers,
             { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     }
 }
