@@ -90,8 +90,6 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             });
         };
 
-        controller.getThe = $scope.get;
-
 
     }]);
 
@@ -122,7 +120,10 @@ function initMap1() {
         placeMarker(event.latLng);
         clickLattitude = event.latLng.lat();
         clickLongitude = event.latLng.lng();
-        ConsoleModule.controller.getThe();
+        var scope = angular.element(document.getElementById("wcontroller")).scope();
+        scope.$apply(function () {
+            scope.get();
+        });
     });
 
     function placeMarker(location) {
