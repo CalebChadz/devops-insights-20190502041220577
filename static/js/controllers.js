@@ -105,7 +105,7 @@ function initMap1() {
         var markerLength = markers.length();
         if (markers) {
             for (var i = 0; i < markerLength; i++) {
-                markers[i].setPosition(locations[i])
+                markers[i].setPosition(locations[i]);
             }
         }
         else {
@@ -120,6 +120,7 @@ function initMap1() {
                 else {
                     return new google.maps.Marker({
                         position: location,
+                        map: map,
                         label: labels[i % labels.length]
                     });
                 }
